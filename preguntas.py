@@ -53,9 +53,9 @@ def pregunta_03():
     """
 
     tabla = tbl0["_c1"].value_counts()
-    tabla = dict(tabla)
-
-    return tabla
+    tabla = pd.Series(tabla)
+    
+    return tabla.sort_index()
 
 
 def pregunta_04():
@@ -72,9 +72,9 @@ def pregunta_04():
     """
 
     tabla = tbl0.groupby("_c1").mean()["_c2"]
-
-
-    return dict(tabla)
+    tabla = pd.Series(tabla)
+    
+    return tabla.sort_index()
 
 
 def pregunta_05():
@@ -93,8 +93,9 @@ def pregunta_05():
     """
 
     tabla = tbl0.groupby("_c1").max()["_c2"]
-
-    return dict(tabla)
+    tabla = pd.Series(tabla)
+    
+    return tabla.sort_index()
 
 
 def pregunta_06():
@@ -127,7 +128,9 @@ def pregunta_07():
     """
 
     tabla = tbl0.groupby("_c1").sum()["_c2"]
-    return dict(tabla)
+    tabla = pd.Series(tabla)
+    
+    return tabla.sort_index()
 
 
 def pregunta_08():
@@ -270,5 +273,6 @@ def pregunta_13():
 
     tabla = pd.merge(tbl0, tbl2)
     tabla = tabla.groupby("_c1").sum()["_c5b"]
-
-    return dict(tabla)
+    tabla = pd.Series(tabla)
+    
+    return tabla.sort_index()
